@@ -3,9 +3,9 @@
 
 namespace Core {
 
-void LayerStack::AddLayer(Layer& layer)
-{
-
-}
+    void LayerStack::AddLayer(std::shared_ptr<Layer> layer)
+    {
+        layers.emplace_back(layer);
+    }
 
 }

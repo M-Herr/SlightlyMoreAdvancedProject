@@ -51,7 +51,7 @@ namespace Utils
     std::byte UUIDGenerator::GetNByte()
     {
 
-        if(clock_sequence = 0)
+        if(clock_sequence == 0)
         {
             std::bitset<4> clock_sequence_bits;
 

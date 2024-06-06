@@ -9,7 +9,9 @@ project(
 find_package(GTest REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(hello-imgui CONFIG REQUIRED)
+find_package(glad CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
+find_package(OpenGL REQUIRED)
 
 set(PROJECT_INCLUDE_DIR
 ${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -25,6 +27,7 @@ ${PROJECT_INCLUDE_DIR}/Core/SignalHandling.hpp
 ${PROJECT_INCLUDE_DIR}/Core/Layer.hpp
 ${PROJECT_INCLUDE_DIR}/Core/LayerStack.hpp
 ${PROJECT_INCLUDE_DIR}/Util/UUID.hpp
+${PROJECT_INCLUDE_DIR}/Graphics/GLFW.hpp
 )
 
 set(PROJECT_SOURCE 
@@ -35,6 +38,7 @@ ${PROJECT_SOURCE_DIR}/Core/SignalHandling.cpp
 ${PROJECT_SOURCE_DIR}/Core/Layer.cpp
 ${PROJECT_SOURCE_DIR}/Core/LayerStack.cpp
 ${PROJECT_SOURCE_DIR}/Util/UUID.cpp
+${PROJECT_SOURCE_DIR}/Graphics/GLFW.cpp
 )
 
 
@@ -54,7 +58,7 @@ target_include_directories(ExampleProject
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     )
 
-target_link_libraries(ExampleProject PRIVATE GTest::gtest_main spdlog::spdlog glfw hello-imgui::hello_imgui)
+target_link_libraries(ExampleProject PRIVATE GTest::gtest_main spdlog::spdlog glfw OpenGL::GL hello-imgui::hello_imgui glad::glad)
 
 #set_target_properties(ExampleProject PROPERTIES PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/include/example_project.hh)
 

@@ -3,7 +3,7 @@
 #define __LAYER_STACK_HH
 
 #include <vector>
-
+#include <memory>
 
 namespace Core {
 class Layer;
@@ -15,7 +15,7 @@ class Layer;
         LayerStack() = default;
         ~LayerStack() = default;
 
-        void AddLayer(Layer& layer);
+        void AddLayer(std::shared_ptr<Layer> );
 
         LayerStack(LayerStack&& other) noexcept
         {
@@ -32,7 +32,7 @@ class Layer;
         LayerStack(const LayerStack& other) = delete; //Delete copy 
         LayerStack& operator=(const LayerStack& other) = delete; //Delete copy assignment
 
-        std::vector<Layer> layers;
+        std::vector<std::shared_ptr<Layer>> layers;
 
     };
 

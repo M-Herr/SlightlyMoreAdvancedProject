@@ -1,4 +1,5 @@
 #include "Core/Application.hpp"
+#include "Graphics/GLFW.hpp"
 
 namespace Core {
 
@@ -24,23 +25,38 @@ namespace Core {
         std::signal(SIGQUIT, signalHandler);
 
     }
+
     int Application::Run()
-    {
-
-        Layer test_layer;
-
-        layers.AddLayer(test_layer);
-
+    {   
         
+        std::string window_name("Test Window");
+        auto glfw_ptr = std::make_shared<Graphics::GLFW>(window_name);   
+       
+        glfw_ptr->Initialize();
+        glfw_ptr->CreateWindow();
+        glfwSwapInterval(1);
+        
+
         while(running) {
 
-            for(auto& layer : layers.layers)
-            {
-                layer.Update();
-            }
+            /* Render here */
+            glClear(GL_COLOR_BUFFER_BIT);
 
+            /* Swap front and back buffers */
+            glfwSwapBuffers(glfw_ptr->window);
+
+            /* Poll for and process events */
+            glfwPollEvents();
+            
+            if(glfwWindowShouldClose(glfw_ptr->window))
+            {   
+                running = false;
+                glfwDestroyWindow(glfw_ptr->window);
+            }
         }
 
+       
+        glfwTerminate();
         return 0;
     }
 

@@ -10,25 +10,23 @@ namespace Core {
         auto start = std::chrono::high_resolution_clock::now();
         uuid = uuid_gen->Generate();
         auto end = std::chrono::high_resolution_clock::now();
-
-        ConsoleLogger::getInstance()->info("UUID generated in: {} ms", std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count());
    
         ConsoleLogger::getInstance()->info("Created layer with UUID: {}", uuid.GetFormatted());
     }   
 
     void Layer::OnAttach() 
     {
-
+        ConsoleLogger::getInstance()->info("OnAttach for layer {} was called.", name);
     }
 
     void Layer::OnDetach()
     {
-
+        ConsoleLogger::getInstance()->info("OnDetach for layer {} was called.", name);
     }
 
     void Layer::Update()
     {
-    
+        ConsoleLogger::getInstance()->info("Update function in layer {} was called.", name);
     }
 
 }
