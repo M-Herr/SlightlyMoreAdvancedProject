@@ -1,3 +1,25 @@
 {
-    "dependencies": ["gtest", "spdlog"]
+    "dependencies": [
+        {
+            "name": "gtest",
+            "default-features": true
+        },
+        {
+            "name": "spdlog",
+            "default-features": true
+        },
+        {
+            "name": "glad"
+        },
+        {
+            "name": "glfw3"
+        },
+        {
+            "name": "hello-imgui",
+            "default-features": false,
+            "features": [
+                "glfw-binding"
+            ]
+        }
+    ]
 }
