@@ -15,10 +15,13 @@
             "name": "glfw3"
         },
         {
-            "name": "hello-imgui",
+            "name": "imgui",
             "default-features": false,
             "features": [
-                "glfw-binding"
+                "glfw-binding",
+                "opengl3-binding",
+                "vulkan-binding",
+                "docking-experimental"
             ]
         }
     ]

@@ -1,5 +1,6 @@
 #include "Core/Application.hpp"
-#include "Graphics/GLFW.hpp"
+
+
 
 namespace Core {
 
@@ -29,34 +30,30 @@ namespace Core {
     int Application::Run()
     {   
         
-        std::string window_name("Test Window");
-        auto glfw_ptr = std::make_shared<Graphics::GLFW>(window_name);   
-       
-        glfw_ptr->Initialize();
-        glfw_ptr->CreateWindow();
-        glfwSwapInterval(1);
+        UI::WindowProperties properties = 
+        {
+            .width = 1920,
+            .height = 1080,
+            .clear_color = {4.0/255.0, 59.0/255.0, 92.0/255.0, 1},
+            .name = "Application"
+        };
+
+        main_window = std::make_shared<UI::MainWindow>(properties);
+        main_window->InitializeGLFW();
+        main_window->SetupImgui();
         
+        while(running) {    
+            main_window->BeginFrame();
 
-        while(running) {
 
-            /* Render here */
-            glClear(GL_COLOR_BUFFER_BIT);
 
-            /* Swap front and back buffers */
-            glfwSwapBuffers(glfw_ptr->window);
-
-            /* Poll for and process events */
-            glfwPollEvents();
-            
-            if(glfwWindowShouldClose(glfw_ptr->window))
-            {   
-                running = false;
-                glfwDestroyWindow(glfw_ptr->window);
-            }
+            main_window->EndFrame();
+            running = main_window->running;
         }
 
-       
-        glfwTerminate();
+        main_window->CleanUp();
+
+
         return 0;
     }
 

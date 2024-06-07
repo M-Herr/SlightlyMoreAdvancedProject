@@ -16,6 +16,8 @@
 #include "Core/Layer.hpp"
 #include "Core/LayerStack.hpp"
 
+#include "UI/MainWindow.hpp"
+
 namespace Core {
 
     class Application 
@@ -39,7 +41,7 @@ namespace Core {
         friend int main(int argc, char* argv[]);
 
         void SetName(std::string& new_name) { name = new_name;}
-        
+
         std::atomic<bool> running;
         
         private:
@@ -53,7 +55,8 @@ namespace Core {
         CommandLineArgs command_line_args;
 
         LayerStack layers;  //Relegate actual logic to layers.  Could this blow up in my face later?  Maybe.  Let's find out!
-    
+
+        std::shared_ptr<UI::MainWindow> main_window;
     };
 
 }
