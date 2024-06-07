@@ -55,7 +55,7 @@ namespace Core {
         CommandLineArgs command_line_args;
 
         LayerStack layers;  //Relegate actual logic to layers.  Could this blow up in my face later?  Maybe.  Let's find out!
-
+        
         std::shared_ptr<UI::MainWindow> main_window;
     };
 

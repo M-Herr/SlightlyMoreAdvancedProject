@@ -28,7 +28,9 @@ ${PROJECT_INCLUDE_DIR}/Core/Layer.hpp
 ${PROJECT_INCLUDE_DIR}/Core/LayerStack.hpp
 ${PROJECT_INCLUDE_DIR}/Util/UUID.hpp
 ${PROJECT_INCLUDE_DIR}/UI/MainWindow.hpp
+${PROJECT_INCLUDE_DIR}/UI/Window.hpp
 ${PROJECT_INCLUDE_DIR}/UI/UIComponent.hpp
+${PROJECT_INCLUDE_DIR}/UI/Button.hpp
 )
 
 set(PROJECT_SOURCE 
@@ -40,7 +42,8 @@ ${PROJECT_SOURCE_DIR}/Core/Layer.cpp
 ${PROJECT_SOURCE_DIR}/Core/LayerStack.cpp
 ${PROJECT_SOURCE_DIR}/Util/UUID.cpp
 ${PROJECT_SOURCE_DIR}/UI/MainWindow.cpp
-${PROJECT_SOURCE_DIR}/UI/UIComponent.cpp
+${PROJECT_SOURCE_DIR}/UI/Window.cpp
+${PROJECT_SOURCE_DIR}/UI/Button.cpp
 )
 
 

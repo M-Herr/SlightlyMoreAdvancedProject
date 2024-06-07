@@ -1,6 +1,8 @@
 #include "Core/Application.hpp"
 
 
+#include "UI/Window.hpp"
+
 
 namespace Core {
 
@@ -42,10 +44,15 @@ namespace Core {
         main_window->InitializeGLFW();
         main_window->SetupImgui();
         
+        std::string test_name("Test Window");
+        UI::Window an_imgui_window(test_name);
+
         while(running) {    
             main_window->BeginFrame();
 
-
+            an_imgui_window.Begin();
+            
+            an_imgui_window.End();
 
             main_window->EndFrame();
             running = main_window->running;

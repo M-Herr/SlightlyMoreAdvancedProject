@@ -7,20 +7,17 @@
 
 namespace UI 
 {
-
     class Button : public UIComponent
     {
         public:
-        Buttton();
+        Button(std::string& name);
         ~Button();
 
-        virtual void PreRender() override;
-        virtual void Render() override;
-        virtual void PostRender() override;
-
+        virtual void Begin() override;
+        virtual void End() override;
 
         bool clicked;
-
+        std::string button_text;
     };
 
 }
